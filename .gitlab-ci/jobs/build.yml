@@ -27,6 +27,7 @@
        cp --remove-destination $(realpath ${d}/tmp/deploy/images/${MACHINE}/${IMAGE}-image-${MACHINE}.tar.gz) ${d}/tmp/deploy/images/${MACHINE}/${IMAGE}-image-${MACHINE}.tar.gz
   dependencies:
     - fetch
+  needs: ["fetch"]
   artifacts:
     paths:
       - build/tmp/deploy/images/${MACHINE}/${IMAGE}-image-${MACHINE}.tar.gz
