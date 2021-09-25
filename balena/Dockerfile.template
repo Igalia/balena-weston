@@ -1,0 +1,7 @@
+FROM igalia/docker-weston:%%BALENA_MACHINE_NAME%%
+
+COPY weston-init /weston-init
+RUN chmod +x /weston-init
+
+CMD [ "/weston-init" ]
+

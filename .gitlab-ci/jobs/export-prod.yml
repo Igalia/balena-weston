@@ -6,7 +6,6 @@
   tags:
     - docker-aarch64
   variables:
-    IMAGE: balena-weston
     MACHINE: raspberrypi3
     REGISTRY: $DOCKER_HUB_REGISTRY
     REGISTRY_USER: $DOCKER_HUB_USER
@@ -14,8 +13,8 @@
     REGISTRY_PATH: igalia
   script:
     - apk update
-    - apk add git bash
-    - bash ./import.sh
+    - apk add git bash linux-headers python3 make g++ npm
+    - npm install balena-cli --global --production --unsafe-perm
     - bash ./push.sh
 
 export-prod-balena-weston-raspberrypi3:
@@ -24,7 +23,7 @@ export-prod-balena-weston-raspberrypi3:
     - .export-prod
   variables:
     MACHINE: raspberrypi3
-    ARCH: arm32v7
+    ARCH: armv7hf
   dependencies:
     - build-balena-weston-raspberrypi3
   needs: ["build-balena-weston-raspberrypi3"]
@@ -44,7 +43,7 @@ export-prod-balena-weston-raspberrypi4:
     - .export-prod
   variables:
     MACHINE: raspberrypi4
-    ARCH: arm32v7
+    ARCH: armv7hf
   dependencies:
     - build-balena-weston-raspberrypi4
   needs: ["build-balena-weston-raspberrypi4"]

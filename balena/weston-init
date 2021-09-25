@@ -1,0 +1,28 @@
+#!/bin/sh
+
+udevd -d
+udevadm control --reload-rules && udevadm trigger
+
+export XDG_RUNTIME_DIR=/run/weston/xdg_runtime
+mkdir -p /run/weston/xdg_runtime
+chmod 0700 /run/weston/xdg_runtime
+
+cat << IEOF > /weston.ini
+[core]
+require-input=false
+
+[launcher]
+
+[shell]
+background-color=0xffdddddd
+background-type=scale-crop
+clock-format=minutes
+panel-color=0x90000000
+panel-position=none
+locking=false
+animation=zoom
+startup-animation=fade
+
+IEOF
+
+weston --tty 2 -c /weston.ini

@@ -1,0 +1,34 @@
+name: weston
+description: >-
+
+  Weston is the reference implementation of a Wayland compositor, as well as an
+  useful environment in and of itself.
+
+  Out of the box, Weston provides a very basic desktop, or a full-featured
+  environment for non-desktop uses such as automotive, embedded, in-flight,
+  industrial, kiosks, set-top boxes and TVs. It also provides a library allowing
+  other projects to build their own full-featured environments on top of
+  Weston's core.
+
+  The core focus of Weston is correctness and reliability. Weston aims to be
+  lean and fast, but more importantly, to be predictable. Whilst Weston does
+  have known bugs and shortcomings, we avoid unknown or variable behaviour as
+  much as possible, including variable performance such as occasional spikes in
+  frame display time.
+version: 0.0.0
+type: sw.application
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://gitlab.com/browsers/docker-balena-weston'
+  logo:
+    type: blob.asset
+    data:
+      url: 'https://raw.githubusercontent.com/igalia/docker-balena-weston/main/logo.svg'
+data:
+  defaultDeviceType: raspberrypi3
+  supportedDeviceTypes:
+    - raspberrypi4-64
+    - raspberrypi3
+    - raspberrypi3-64
