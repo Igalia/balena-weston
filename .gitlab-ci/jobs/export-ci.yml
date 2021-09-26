@@ -1,6 +1,6 @@
 .export-ci:
   stage: export-ci
-  image: docker:stable
+  image: igalia/balena-cli-builder:aarch64
   tags:
     - docker-aarch64
   variables:
@@ -10,13 +10,10 @@
     REGISTRY_PASSWORD: $CI_JOB_TOKEN
     REGISTRY_PATH: $CI_PROJECT_PATH
   script:
-    - apk update
-    - apk add git bash linux-headers python3 make g++ npm
-    - npm install balena-cli --global --production --unsafe-perm
     - bash ./push.sh
 
 export-ci-balena-weston-raspberrypi3:
-  image: arm32v7/docker:stable
+  image: igalia/balena-cli-builder:arm32v7
   extends:
     - .export-ci
   variables:
@@ -36,7 +33,7 @@ export-ci-balena-weston-raspberrypi3-64:
   needs: ["build-balena-weston-raspberrypi3-64"]
 
 export-ci-balena-weston-raspberrypi4:
-  image: arm32v7/docker:stable
+  image: igalia/balena-cli-builder:arm32v7
   extends:
     - .export-ci
   variables:
