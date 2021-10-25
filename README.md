@@ -78,6 +78,13 @@ background-image=/data/wallpapers/MyWallpaper.jpg
 ...
 ```
 
+### Environment variables
+
+| Environment variable   | Default               | Example
+|------------------------|-----------------------|---------------------
+| **`WESTON_IDLE_TIME`** | 0 (never)             | 900
+
+
 ## How to build
 
 * Getting the sources
