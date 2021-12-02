@@ -90,8 +90,8 @@ background-image=/data/wallpapers/MyWallpaper.jpg
 * Getting the sources
 
   ```bash
-  git clone https://gitlab.com/browsers/docker-balena-weston.git
-  repo init -u https://gitlab.com/browsers/docker-balena-weston.git -m manifest-hardknott.xml -b main
+  git clone https://github.com/Igalia/balena-weston.git
+  repo init -u https://github.com/Igalia/balena-weston.git -m manifest-hardknott.xml -b main
   repo sync --force-sync
   ```
 
