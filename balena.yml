@@ -21,13 +21,13 @@ assets:
   repository:
     type: blob.asset
     data:
-      url: 'https://gitlab.com/browsers/docker-balena-weston'
+      url: 'https://github.com/Igalia/balena-weston'
   logo:
     type: blob.asset
     data:
-      url: 'https://raw.githubusercontent.com/igalia/docker-balena-weston/main/logo.svg'
+      url: 'https://raw.githubusercontent.com/Igalia/balena-weston/main/logo.svg'
 data:
-  defaultDeviceType: raspberrypi3
+  defaultDeviceType: raspberrypi4-64
   supportedDeviceTypes:
     - raspberrypi4-64
     - raspberrypi3
