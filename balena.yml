@@ -1,6 +1,5 @@
 name: weston
 description: >-
-
   Weston is the reference implementation of a Wayland compositor, as well as an
   useful environment in and of itself.
 
