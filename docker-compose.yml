@@ -6,7 +6,8 @@ volumes:
 services:
   weston:
     restart: always
-    build: .
+    build: ./balena
     privileged: true
     volumes:
       - 'weston:/run/weston'
+
