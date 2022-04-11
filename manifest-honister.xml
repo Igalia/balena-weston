@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <default sync-j="2"/>
+
+  <remote fetch="https://git.openembedded.org/" name="oe"/>
+  <remote fetch="https://git.yoctoproject.org/git/" name="yocto"/>
+
+  <!-- meta-openembedded: honister -->
+  <project remote="oe" revision="a19d1802b15fe07e9b1e7584ff9af7c33bfe642a" name="meta-openembedded" path="sources/meta-openembedded"/>
+  <!-- poky: honister -->
+  <project remote="yocto" revision="580532cfd0c23e27a366c074e806fc0b6908b874" name="poky" path="sources/poky"/>
+  <!-- meta-raspberrypi: honister -->
+  <project remote="yocto" revision="378d4b6e7ba64b6a9a701457cc3780fa896ba5dc" name="meta-raspberrypi" path="sources/meta-raspberrypi"/>
+</manifest>

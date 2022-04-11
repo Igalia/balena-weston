@@ -4,7 +4,7 @@ fetch:
     - docker-noarch
     - linux
   variables:
-    MANIFEST: manifest-hardknott.xml
+    MANIFEST: manifest-honister.xml
   image: debian:stable-slim
   script:
     - ./scripts/install-fetch-depends.sh
@@ -13,7 +13,7 @@ fetch:
     - ~/.bin/repo init -u $CI_REPOSITORY_URL -m $MANIFEST -b $CI_COMMIT_SHA
     - ~/.bin/repo sync --force-sync
   cache:
-    key: sources-hardknott
+    key: sources-honister
     paths:
       - sources/
   artifacts:

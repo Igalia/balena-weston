@@ -1,6 +1,6 @@
 .build:
   stage: build
-  image: igalia/yocto-builder:hardknott-x86_64
+  image: igalia/yocto-builder:honister-x86_64
   variables:
     IMAGE: weston
     MACHINE: raspberrypi3
@@ -33,7 +33,7 @@
       - build/tmp/deploy/images/${MACHINE}/${IMAGE}-image-${MACHINE}.tar.gz
     expire_in: 1 day
   cache:
-    key: build-hardknott
+    key: build-honister
     paths:
       - build/downloads/
       - build/sstate-cache/
