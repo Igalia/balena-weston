@@ -20,16 +20,16 @@ RM_OLD_IMAGE = "1"
 PACKAGE_CLASSES ?= "package_ipk"
 
 # Additional image features
-USER_CLASSES ?= "buildstats image-mklibs image-prelink"
+USER_CLASSES ?= "buildstats"
 
 # By default disable interactive patch resolution (tasks will just fail instead):
 PATCHRESOLVE = "noop"
 
-CONF_VERSION = "1"
+CONF_VERSION = "2"
 
-DISTRO_FEATURES_append = " opengl egl wayland"
-DISTRO_FEATURES_remove = " x11"
+DISTRO_FEATURES:append = " opengl egl wayland"
+DISTRO_FEATURES:remove = " x11"
 
 # Install hardware acceleration codecs
-IMAGE_FEATURES_append = " hwcodecs"
+IMAGE_FEATURES:append = " hwcodecs"
 
