@@ -42,9 +42,9 @@ if [ "${SKIP_BUILD_BALENA}" == "1" ]
 then
     echo ">>> Build Balena image (SKIPPED):"
 else
-    balena build ./balena --deviceType ${MACHINE} --arch ${ARCH}
-    docker tag "balena_${IMAGE}" "${IMAGE_BALENA_IN_DOCKER}"
-    docker tag "balena_${IMAGE}" "${IMAGE_BALENA_IN_DOCKER}-${VERSION}"
+    balena build . --deviceType ${MACHINE} --arch ${ARCH}
+    docker tag "docker-balena-weston_weston" "${IMAGE_BALENA_IN_DOCKER}"
+    docker tag "docker-balena-weston_weston" "${IMAGE_BALENA_IN_DOCKER}-${VERSION}"
 fi
 
 if [ "${SKIP_PUSH_BALENA_IMAGE}" == "1" ]
