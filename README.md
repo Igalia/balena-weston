@@ -83,8 +83,22 @@ background-image=/data/wallpapers/MyWallpaper.jpg
 | Environment variable                 | Default               | Example
 |--------------------------------------|-----------------------|---------------------
 | **`WESTON_IDLE_TIME`**               | 0 (never)             | 900
-| **`WESTON_OUTPUT_USE_CURRENT_MODE`** | 0                     | 1
 
+#### Compositor settings
+
+The browser relies on the Weston compositor to work. While the defaults are
+fine for most uses, some tweaks are allowed regarding the output resolution.
+
+| Environment variable                       | Options   | Default | Description
+|--------------------------------------------|-----------|---------|---------------------------------------------------
+| **`WESTON_OUTPUT_USE_CURRENT_MODE`**       | `0`, `1`  | `0`     | Inherit the display mode from KMS console
+| **`WESTON_OUTPUT_MAX_WIDTH`**              | `integer` | `0`     | Maximum horizontal resolution the compositor may set
+| **`WESTON_OUTPUT_MAX_HEIGHT`**             | `integer` | `0`     | Maximum vertical resolution the compositor may set
+
+The maximum-resolution environment variables rely on the list of modes
+advertised by the DRM subsystem. That means if you set for example the
+maximum horizontal resolution to `1920` and the list contains `3840x2160`,
+`2560x1440`, `1920x1080` and `1280x800`, `1920x1080` will be picked.
 
 ## How to build
 

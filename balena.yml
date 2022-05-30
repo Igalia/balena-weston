@@ -27,6 +27,10 @@ assets:
       url: 'https://raw.githubusercontent.com/Igalia/balena-weston/main/logo.svg'
 data:
   defaultDeviceType: raspberrypi4-64
+  applicationEnvironmentVariables:
+    - WESTON_OUTPUT_USE_CURRENT_MODE: 0
+    - WESTON_OUTPUT_MAX_WIDTH: 0
+    - WESTON_OUTPUT_MAX_HEIGHT: 0
   supportedDeviceTypes:
     - raspberrypi4-64
     - raspberrypi3

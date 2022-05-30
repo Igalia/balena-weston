@@ -27,6 +27,60 @@ startup-animation=fade
 
 IEOF
 
+WESTON_OUTPUT_MAX_WIDTH=${WESTON_OUTPUT_MAX_WIDTH:-0}
+WESTON_OUTPUT_MAX_HEIGHT=${WESTON_OUTPUT_MAX_HEIGHT:-0}
+
+is_in_range() {
+    test "$2" -eq 0 -o "$1" -le "$2"
+}
+
+# Limit resolution if necessary
+if [ "$WESTON_OUTPUT_MAX_WIDTH" -gt 0 -o "$WESTON_OUTPUT_MAX_HEIGHT" -gt 0 ]; then
+    for outp in /sys/class/drm/card*-*; do
+        # no outputs
+        if [ ! -d "$outp" ]; then
+            break
+        fi
+        # skip if not enabled
+        if [ "$(cat ${outp}/enabled)" = "disabled" ]; then
+            continue
+        fi
+        # get the output name
+        outn=${outp#*-}
+        # check the modes
+        moden=0
+        foundres=
+        for mode in $(cat "${outp}/modes"); do
+            wres=${mode%x*}
+            hres=${mode#*x}
+            moden=$(($moden + 1))
+            # skip interlaced modes and other junk
+            if ! [ "$wres" -eq "$wres" -a "$hres" -eq "$hres" ] 2> /dev/null; then
+                continue
+            fi
+            # check resolution constraints
+            if ! is_in_range "$wres" "$WESTON_OUTPUT_MAX_WIDTH"; then
+                continue
+            fi
+            if ! is_in_range "$hres" "$WESTON_OUTPUT_MAX_HEIGHT"; then
+                continue
+            fi
+            # found an acceptable res
+            foundres="$mode"
+            break
+        done
+        # found a res to use and it's non-preferred, override in weston
+        if [ -n "$foundres" -a "$moden" -gt 1 ]; then
+            cat << IEOF >> /weston.ini
+
+[output]
+name=${outn}
+mode=${foundres}
+IEOF
+        fi
+    done
+fi
+
 WESTON_OUTPUT_USE_CURRENT_MODE=${WESTON_OUTPUT_USE_CURRENT_MODE:-0}
 
 # Allow usage of --current-mode, to let the host system decide the resolution
