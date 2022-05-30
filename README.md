@@ -80,9 +80,10 @@ background-image=/data/wallpapers/MyWallpaper.jpg
 
 ### Environment variables
 
-| Environment variable   | Default               | Example
-|------------------------|-----------------------|---------------------
-| **`WESTON_IDLE_TIME`** | 0 (never)             | 900
+| Environment variable                 | Default               | Example
+|--------------------------------------|-----------------------|---------------------
+| **`WESTON_IDLE_TIME`**               | 0 (never)             | 900
+| **`WESTON_OUTPUT_USE_CURRENT_MODE`** | 0                     | 1
 
 
 ## How to build
