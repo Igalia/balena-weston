@@ -14,7 +14,7 @@ description: >-
   have known bugs and shortcomings, we avoid unknown or variable behaviour as
   much as possible, including variable performance such as occasional spikes in
   frame display time.
-version: 2.1.0
+version: 3.0.0
 type: sw.application
 assets:
   repository:
